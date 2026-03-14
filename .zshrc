@@ -66,6 +66,11 @@ alias rm='rm -iv'             # confirm before destructive ops
 alias ports='ss -tulnp'
 alias path='echo $PATH | tr ":" "\n"'
 
+# --- tmux ---
+t() {
+    tmux new -A -s "${1:-main}";
+}
+
 # --- direnv ---
 eval "$(direnv hook zsh)"
 
