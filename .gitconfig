@@ -1,0 +1,66 @@
+# Set your identity:
+# git config --global user.name "Your Name"
+# git config --global user.email "you@example.com"
+
+[core]
+  editor = nano
+  autocrlf = input
+
+[init]
+  defaultBranch = main
+
+[branch]
+  sort = -committerdate     # shows most recent branches first
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+  updateRefs = true
+
+[merge]
+  conflictstyle = zdiff3     # shows base in conflict markers (needs git ≥2.35)
+
+[diff]
+  algorithm = histogram      # better diff algorithm
+  colorMoved = default
+
+[alias]
+  # One-liners
+  st = status -sb
+  co = checkout
+  sw = switch
+  br = branch
+  cp = cherry-pick
+  # Log views
+  lg = log --oneline --graph --decorate
+  lga = log --oneline --graph --decorate --all
+  ll = log --pretty=format:"%C(yellow)%h%Creset %s %C(blue)(%ar)%Creset %C(green)<%an>%Creset"
+  # Working tree
+  undo = reset HEAD~1 --soft   # undo last commit, keep changes staged
+  wip = !git add -A && git commit -m 'WIP'
+  unwip = !git log -1 | grep -q 'WIP' && git reset HEAD~1 || echo 'Last commit is not WIP'
+  # Cleanup
+  gone = !git fetch --all -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+  trim = !git remote prune origin
+
+[push]
+  default = current
+  autoSetupRemote = true     # auto --set-upstream on first push
+
+[fetch]
+  prune = true               # auto-remove stale remote-tracking branches
+
+[credential]
+  helper = store             # or use libsecret on Linux
+
+[rerere]                     # git remembers how you resolved a merge conflict and automatically applies the same fix if the conflict appears again.
+  enabled = true
+  autoupdate = true
+
+[tag]
+  sort = -version:refname   # semantic version sort for tags (v1.10 after v1.9)
+
+[help]
+  autocorrect = prompt
