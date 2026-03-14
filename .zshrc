@@ -41,6 +41,7 @@ bindkey '^[[B' history-search-forward
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --bind ctrl-j:down,ctrl-k:up'
 
 # --- zoxide ---
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init zsh)"
 alias cd='z'                  # or keep `z` separate if you prefer
 
