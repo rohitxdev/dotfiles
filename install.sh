@@ -23,7 +23,7 @@ sudo apt install -y eza
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # --- starship ---
-curl -sS https://starship.rs/install.sh | sh
+curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 # --- git identity ---
 current_name=$(git config --global user.name 2>/dev/null || true)
